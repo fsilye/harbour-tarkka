@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-tarkka
+Exec=harbour-tarkka
+Name=Tarkka
+
+[X-Sailjail]
+OrganizationName=org.fravaccaro
+ApplicationName=harbour-tarkka
+Permissions=Camera
