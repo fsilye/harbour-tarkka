@@ -4,8 +4,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    // --- VISUAL SECTION ---
-    // --- LOGIC SECTION ---
 
     id: mainPage
 
@@ -49,10 +47,6 @@ Page {
     }
 
     SilicaFlickable {
-        // 1. Definiamo il PushUpMenu (appare trascinando dal basso verso l'alto)
-        // 1. Full Screen Viewfinder
-        // 2. Control Overlay
-
         anchors.fill: parent
         contentHeight: parent.height
 
@@ -148,10 +142,6 @@ Page {
                 }
 
                 Slider {
-                    // Usiamo 'width: parent.width - (pulsanti)' per far stare tutto in riga
-                    // Ma in Silica è più semplice gestire i pesi o larghezze fisse.
-                    // Qui lo forziamo a occupare lo spazio centrale:
-
                     id: zoomSlider
 
                     width: parent.width - (Theme.paddingSmall * 2)
@@ -178,8 +168,6 @@ Page {
                         height: parent.height
 
                         IconButton {
-                            // Calcoliamo lo scatto: (Massimo - Minimo) / 4
-
                             anchors.centerIn: parent
                             icon.width: Theme.iconSizeLarge
                             icon.height: Theme.iconSizeLarge
@@ -198,8 +186,6 @@ Page {
                         height: parent.height
 
                         IconButton {
-                            // Rendiamo l'icona più grande come abbiamo fatto per lo zoom
-
                             id: flashButton
 
                             anchors.centerIn: parent

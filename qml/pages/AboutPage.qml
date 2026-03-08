@@ -50,7 +50,6 @@ Page {
                     text: "Tarkka 0.1"
                 }
 
-                // We keep text blocks in a single qsTr() for the translators
                 LabelText {
                     text: qsTr("Tarkka is a digital magnifier designed specifically for Sailfish OS. It leverages native camera capabilities to help you observe details clearly.")
                 }
