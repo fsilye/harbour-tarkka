@@ -4,7 +4,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-    // --- GESTIONE DEL CICLO DI VITA (LIFECYCLE) ---
 
     id: mainPage
 
@@ -17,7 +16,7 @@ Page {
     }
 
     allowedOrientations: Orientation.Portrait
-    // 1. Gestisce cosa succede quando cambi pagina (es. vai su AboutPage)
+    // What happens when page is changed
     onStatusChanged: {
         if (status === PageStatus.Inactive || status === PageStatus.Deactivating)
             camera.cameraState = Camera.UnloadedState;
@@ -416,17 +415,17 @@ Page {
 
     }
 
-    // 2. Gestisce cosa succede quando l'app va in background (es. torni alla Home)
+    // What happens when the app goes to the background
     Connections {
         target: Qt.application
         onActiveChanged: {
             if (Qt.application.active) {
-                // Riaccendi la fotocamera SOLO se siamo sulla pagina principale e NON è in pausa
+                // Turn the camera on if on mainPage and NOT freeze view
                 if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
                     camera.cameraState = Camera.ActiveState;
 
             } else {
-                // Spegni tutto quando l'app viene messa in background
+                // Turn everything off when app is on the background
                 camera.cameraState = Camera.UnloadedState;
                 camera.isFlashOn = false;
             }
