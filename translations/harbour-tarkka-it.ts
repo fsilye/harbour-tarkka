@@ -68,8 +68,8 @@
         <translation>Tarkka è una lente d&apos;ingrandimento digitale progettata specificamente per Sailfish OS. Sfrutta le funzionalità native della fotocamera per aiutarti a osservare i dettagli chiaramente.</translation>
     </message>
     <message>
-        <source>&lt;ul&gt;&lt;li&gt;Smooth digital zoom up to 4x.&lt;/li&gt;&lt;li&gt;Specialized filters: Negative, Grayscale, Whiteboard, and Blackboard.&lt;/li&gt;&lt;li&gt;Torch support for low-light environments.&lt;/li&gt;&lt;li&gt;Minimalist UI optimized for one-handed use.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>&lt;ul&gt;&lt;li&gt;Zoom digitale fluido fino a 4x.&lt;/li&gt;&lt;li&gt;Filtri specializzati: Negativo, Scala di grigi, Lavagna bianca e Lavagna nera.&lt;/li&gt;&lt;li&gt;Supporto torcia per ambienti con scarsa illuminazione.&lt;/li&gt;&lt;li&gt;Interfaccia utente minimalista ottimizzata per l&apos;uso con una sola mano.&lt;/li&gt;&lt;/ul&gt;</translation>
+        <source>&lt;ul&gt;&lt;li&gt;Smooth digital zoom up to 4x.&lt;/li&gt;&lt;li&gt;Specialized filters: Negative, Black and white, Solarize, Whiteboard, and Blackboard.&lt;/li&gt;&lt;li&gt;Torch support for low-light environments.&lt;/li&gt;&lt;li&gt;Minimalist UI optimized for one-handed use.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation>&lt;ul&gt;&lt;li&gt;Zoom digitale fluido fino a 4x.&lt;/li&gt;&lt;li&gt;Filtri specializzati: Negativo, Bianco e nero, Solarizza, Lavagna bianca e Lavagna nera.&lt;/li&gt;&lt;li&gt;Supporto torcia per ambienti con scarsa illuminazione.&lt;/li&gt;&lt;li&gt;Interfaccia utente minimalista ottimizzata per l&apos;uso con una sola mano.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Released under the &lt;a href=&apos;https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE&apos;&gt;GNU GPLv3&lt;/a&gt; license.</source>
@@ -105,6 +105,10 @@
     <message>
         <source>Blackboard</source>
         <translation>Lavagna nera</translation>
+    </message>
+    <message>
+        <source>Solarize</source>
+        <translation>Solarizza</translation>
     </message>
 </context>
 </TS>

@@ -75,7 +75,7 @@ Page {
                 }
 
                 LabelText {
-                    text: qsTr("<ul><li>Smooth digital zoom up to 4x.</li><li>Specialized filters: Negative, Grayscale, Whiteboard, and Blackboard.</li><li>Torch support for low-light environments.</li><li>Minimalist UI optimized for one-handed use.</li></ul>")
+                    text: qsTr("<ul><li>Smooth digital zoom up to 4x.</li><li>Specialized filters: Negative, Black and white, Solarize, Whiteboard, and Blackboard.</li><li>Torch support for low-light environments.</li><li>Minimalist UI optimized for one-handed use.</li></ul>")
                 }
 
                 SectionHeader {
