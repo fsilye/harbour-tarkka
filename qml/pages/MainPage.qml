@@ -44,7 +44,7 @@ Page {
         repeat: false
         onTriggered: {
             camera.imageProcessing.colorFilter = CameraImageProcessing.ColorFilterNone;
-            camera.imageProcessing.colorFilter = page.currentFilter;
+            camera.imageProcessing.colorFilter = mainPage.currentFilter;
         }
     }
 

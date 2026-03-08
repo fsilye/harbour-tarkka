@@ -59,7 +59,7 @@ Page {
                 }
 
                 LabelText {
-                    text: qsTr("Released under the <a href='https://www.gnu.org/licenses/gpl-3.0'>GNU GPLv3</a> license.")
+                    text: qsTr("Released under the <a href='https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE'>GNU GPLv3</a> license.")
                 }
 
                 LabelSpacer {
@@ -68,7 +68,7 @@ Page {
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: qsTr("Sources")
-                    onClicked: Qt.openUrlExternally("https://uithemer.github.io/sailfishos-uithemer/")
+                    onClicked: Qt.openUrlExternally("https://github.com/fravaccaro/harbour-tarkka")
                 }
 
                 SectionHeader {
@@ -93,7 +93,7 @@ Page {
                 Button {
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: qsTr("Issues")
-                    onClicked: Qt.openUrlExternally("https://github.com/uithemer/sailfishos-uithemer/issues")
+                    onClicked: Qt.openUrlExternally("https://github.com/fravaccaro/harbour-tarkka/issues")
                 }
 
                 SectionHeader {

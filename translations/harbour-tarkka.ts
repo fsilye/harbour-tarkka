@@ -12,10 +12,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Released under the &lt;a href=&apos;https://www.gnu.org/licenses/gpl-3.0&apos;&gt;GNU GPLv3&lt;/a&gt; license.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sources</source>
         <translation type="unfinished"></translation>
     </message>
@@ -73,6 +69,10 @@
     </message>
     <message>
         <source>&lt;ul&gt;&lt;li&gt;Smooth digital zoom up to 4x.&lt;/li&gt;&lt;li&gt;Specialized filters: Negative, Grayscale, Whiteboard, and Blackboard.&lt;/li&gt;&lt;li&gt;Torch support for low-light environments.&lt;/li&gt;&lt;li&gt;Minimalist UI optimized for one-handed use.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Released under the &lt;a href=&apos;https://github.com/fravaccaro/harbour-tarkka/blob/main/LICENSE&apos;&gt;GNU GPLv3&lt;/a&gt; license.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

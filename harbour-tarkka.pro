@@ -25,7 +25,6 @@ DISTFILES += qml/harbour-tarkka.qml \
     qml/components/*.qml \
     qml/pages/*.qml \
     rpm/harbour-tarkka.changes \
-    rpm/harbour-tarkka.changes.run \
     rpm/harbour-tarkka.spec \
     translations/*.ts \
     harbour-tarkka.desktop
@@ -37,9 +36,4 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 CONFIG += sailfishapp_i18n
 
 INSTALLS += images
-
-# German translation is enabled as an example. If you aren't
-# planning to localize your app, remember to comment out the
-# following TRANSLATIONS line. And also do not forget to
-# modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-tarkka-de.ts
+TRANSLATIONS +=  translations/*.ts
