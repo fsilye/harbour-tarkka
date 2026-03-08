@@ -16,7 +16,7 @@ Page {
     }
 
     allowedOrientations: Orientation.Portrait
-    // What happens when page is changed
+    // What happens when the page is changed
     onStatusChanged: {
         if (status === PageStatus.Inactive || status === PageStatus.Deactivating)
             camera.cameraState = Camera.UnloadedState;
@@ -425,7 +425,7 @@ Page {
                     camera.cameraState = Camera.ActiveState;
 
             } else {
-                // Turn everything off when app is on the background
+                // Turn everything off when the app is on the background
                 camera.cameraState = Camera.UnloadedState;
                 camera.isFlashOn = false;
             }
