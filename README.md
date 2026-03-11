@@ -16,7 +16,7 @@ Turn your Sailfish device into a digital magnifying glass. Designed for simplici
 If you like my work and want to buy me a beer, [feel free to do it](https://www.paypal.me/fravaccaro)!
 
 ## Translate
-Request a new language or contribute to existing languages on the [Transifex project page](https://app.transifex.com/fravaccaro/tarkka/harbour-tarkkats/).
+Request a new language or contribute to existing languages on the [Transifex project page](https://explore.transifex.com/fravaccaro/tarkka/).
 
 ## Credits
 Thanks to piggz and his amazing work on [Advancd Camera](https://github.com/piggz/harbour-advanced-camera), exposing the filter logic helped me immensely.
