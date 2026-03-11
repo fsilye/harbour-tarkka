@@ -50,6 +50,7 @@ Page {
 
         PushUpMenu {
             enabled: !mainPage.isFrozen
+            visible: !mainPage.isFrozen
 
             MenuItem {
                 text: qsTr("Filters")
