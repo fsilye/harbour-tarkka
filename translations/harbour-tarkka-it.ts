@@ -119,8 +119,8 @@
 <context>
     <name>MainPage</name>
     <message>
-        <source>About</source>
-        <translation>Informazioni</translation>
+        <source>Filters</source>
+        <translation>Filtri</translation>
     </message>
     <message>
         <source>Brightness</source>
@@ -131,8 +131,8 @@
         <translation>Contrasto</translation>
     </message>
     <message>
-        <source>Filters</source>
-        <translation>Filtri</translation>
+        <source>About</source>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <source>None</source>

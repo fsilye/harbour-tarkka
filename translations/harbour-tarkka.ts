@@ -119,7 +119,7 @@
 <context>
     <name>MainPage</name>
     <message>
-        <source>About</source>
+        <source>Filters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -131,7 +131,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Filters</source>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

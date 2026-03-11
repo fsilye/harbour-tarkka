@@ -11,7 +11,7 @@ Page {
     property int viewMode: 0
     property real brightnessValue: 1
     property real contrastValue: 1
-
+    property alias cameraObj: camera
     function syncCameraSettings() {
         camera.flash.mode = camera.isFlashOn ? Camera.FlashTorch : Camera.FlashOff;
     }
@@ -34,6 +34,7 @@ Page {
         property bool isFlashOn: false
 
         captureMode: Camera.CaptureVideo
+        cameraState: Camera.UnloadedState
         viewfinder.resolution: "1920x1080"
 
         focus {
@@ -527,6 +528,7 @@ Page {
             target: Qt.application
             onActiveChanged: {
                 if (Qt.application.active) {
+                    bootForceSwitchTimer.stop(); // Stop the "kill" timer if user returns
                     // Turn the camera on if on mainPage and NOT freeze view
                     if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
                         camera.cameraState = Camera.ActiveState;
@@ -541,6 +543,29 @@ Page {
             }
         }
 
+    }
+
+    Timer {
+        id: bootForceSwitchTimer
+        interval: 1000 // 1 second
+        repeat: false
+        onTriggered: {
+            if (!Qt.application.active) {
+                console.log("Forcing camera shutdown after 1s safety delay");
+                camera.stop();
+                camera.cameraState = Camera.UnloadedState;
+                camera.isFlashOn = false;
+            }
+        }
+    }
+
+    Component.onCompleted: {
+        if (!Qt.application.active) {
+            // Start the countdown if the app is already in background
+            bootForceSwitchTimer.start();
+        } else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen) {
+            camera.cameraState = Camera.ActiveState;
+        }
     }
 
 }
