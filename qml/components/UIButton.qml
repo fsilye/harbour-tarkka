@@ -7,4 +7,5 @@ IconButton {
     icon.height: Theme.iconSizeLarge
     anchors.verticalCenter: parent.verticalCenter
     icon.color: pressed ? Theme.highlightColor : Theme.lightPrimaryColor
+    opacity: enabled ? 1.0 : 0.3
 }

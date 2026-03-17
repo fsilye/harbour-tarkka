@@ -189,19 +189,27 @@ Page {
 
                 property real initialScale: 1
                 property real initialZoom: 1
+                property real sensitivity: 2
 
                 anchors.fill: parent
                 onPinchStarted: {
                     if (mainPage.isFrozen)
                         initialScale = frozenView.scale;
                     else
-                        initialZoom = zoomSlider.value;
+                        if (camera.cameraState === Camera.ActiveState) {
+                            initialZoom = zoomSlider.value;
+                        }
                 }
                 onPinchUpdated: {
                     if (mainPage.isFrozen)
                         frozenView.scale = Math.max(1, Math.min(initialScale * pinch.scale, 4));
-                    else
-                        zoomSlider.value = Math.max(1, Math.min(initialZoom * pinch.scale, 4));
+                    else if (camera.cameraState === Camera.ActiveState) {
+                        var sensitivity = 4;
+                        var delta = (pinch.scale - 1) * sensitivity;
+                        var newZoom = initialZoom + delta;
+                        var maxZoom = camera.maximumDigitalZoom > 1 ? camera.maximumDigitalZoom : 4;
+                        zoomSlider.value = Math.max(1, Math.min(newZoom, maxZoom));
+                    }
                 }
 
                 MouseArea {
@@ -311,12 +319,17 @@ Page {
 
                     anchors.left: switchCameraButton.right
                     anchors.right: flashButton.left
-                    opacity: pressed ? 1 : 0.8
+                    enabled: camera.cameraState === Camera.ActiveState
+                    opacity: enabled ? (pressed ? 1 : 0.8) : 0.3
                     label: "Zoom: " + value.toFixed(1) + "x"
                     minimumValue: 1
                     maximumValue: camera.maximumDigitalZoom > 1 ? camera.maximumDigitalZoom : 4
                     value: 1
-                    onValueChanged: camera.digitalZoom = value
+                    onValueChanged: {
+                        if (camera.cameraState === Camera.ActiveState) {
+                            camera.digitalZoom = value
+                        }
+                    }
                 }
 
                 UIButton {
@@ -326,6 +339,7 @@ Page {
                     anchors.rightMargin: Theme.horizontalPageMargin
                     icon.width: Theme.iconSizeMedium
                     icon.height: Theme.iconSizeMedium
+                    enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                     visible: camera.position === Camera.BackFace
                     icon.source: camera.isFlashOn ? "image://theme/icon-camera-flash-on" : "image://theme/icon-camera-flash-off"
                     onClicked: {
@@ -348,6 +362,7 @@ Page {
 
                     UIButton {
                         anchors.right: parent.right
+                        enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                         icon.source: "image://theme/icon-m-remove"
                         onClicked: {
                             var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
@@ -392,6 +407,7 @@ Page {
 
                     UIButton {
                         anchors.left: parent.left
+                        enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                         icon.source: "image://theme/icon-m-add"
                         onClicked: {
                             var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
