@@ -31,9 +31,10 @@ Page {
     Component.onCompleted: {
         // Start the countdown if the app is already in background
 
-        if (!Qt.application.active)
+        if (!Qt.application.active) {
                     console.log("Forced background timer");
             bootForceSwitchTimer.start();
+        }
         else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
             camera.cameraState = Camera.ActiveState;
     }
@@ -329,10 +330,10 @@ Page {
                     customLabelText: "Zoom: " + Math.round(value) + "x"
                     onValueChanged: {
                         if (camera.cameraState === Camera.ActiveState) {
-                            var safeZoom = Math.max(minimumValue, Math.min(maximumValue, value));
+                            var absoluteMax = maximumValue - 0.01; // The max zoom would not work without this 
+                            var safeZoom = Math.max(minimumValue, Math.min(absoluteMax, value));
                             console.log("Slider clicked/dragged! Safe zoom is now:", safeZoom);
                             console.log("Slider value:", zoomSlider.value);
-                            console.log("Maximum zoom reported by the system:", camera.maximumDigitalZoom);
                             camera.digitalZoom = safeZoom;
                         }
                     }
