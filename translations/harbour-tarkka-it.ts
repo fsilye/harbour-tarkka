@@ -148,75 +148,99 @@
     <name>MainPage</name>
     <message>
         <source>Filters</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtri</translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Luminosità</translation>
     </message>
     <message>
         <source>Contrast</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrasto</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation type="unfinished">Scala di grigi</translation>
+        <translation>Scala di grigi</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation type="unfinished">Negativo</translation>
+        <translation>Negativo</translation>
     </message>
     <message>
         <source>Solarize</source>
-        <translation type="unfinished">Solarizza</translation>
+        <translation>Solarizza</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation type="unfinished">Lavagna bianca</translation>
+        <translation>Lavagna bianca</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation type="unfinished">Lavagna nera</translation>
+        <translation>Lavagna nera</translation>
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation type="unfinished">Giallo su nero</translation>
+        <translation>Giallo su nero</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation type="unfinished">Nero su giallo</translation>
+        <translation>Nero su giallo</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation type="unfinished">Giallo su blu</translation>
+        <translation>Giallo su blu</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation type="unfinished">Blu su giallo</translation>
+        <translation>Blu su giallo</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation type="unfinished">Bianco su blu</translation>
+        <translation>Bianco su blu</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation type="unfinished">Blu su bianco</translation>
+        <translation>Blu su bianco</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation type="unfinished">Rosso su nero</translation>
+        <translation>Rosso su nero</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation type="unfinished">Nero su rosso</translation>
+        <translation>Nero su rosso</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>Apri</translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation>Condividi</translation>
+    </message>
+    <message>
+        <source>Image saved</source>
+        <translation>Immagine salvata</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Errore</translation>
+    </message>
+    <message>
+        <source>Error saving the image in the gallery</source>
+        <translation>Errore durante il salvataggio nella galleria</translation>
+    </message>
+    <message>
+        <source>Image saved in the gallery as </source>
+        <translation>Immagine salvata nella galleria come </translation>
     </message>
 </context>
 </TS>

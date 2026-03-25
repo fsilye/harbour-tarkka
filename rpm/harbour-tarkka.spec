@@ -1,7 +1,7 @@
 Name:       harbour-tarkka
 
 Summary:    Tarkka
-Version:    0.3.2
+Version:    0.4.0
 Release:    1
 License:    GPLv3
 URL:        https://github.com/fravaccaro/harbour-tarkka
@@ -14,7 +14,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Turn your Sailfish device into a powerful digital magnifying glass. Designed for simplicity and accessibility.
+Turn your Sailfish OS device into a powerful digital magnifying glass. Designed for simplicity and accessibility.
 
 
 %prep

@@ -1,9 +1,13 @@
 import "../components"
+import Nemo.Notifications 1.0
 import QtMultimedia 5.6
 import QtQuick 2.0
+import Sailfish.Share 1.0
 import Sailfish.Silica 1.0
 
 Page {
+    // Start the countdown if the app is already in background
+
     id: mainPage
 
     property int currentFilter: 0
@@ -12,6 +16,8 @@ Page {
     property real brightnessValue: 1
     property real contrastValue: 1
     property alias cameraObj: camera
+    property var lastFreezeFrame
+    property string savedImagePath
 
     function syncCameraSettings() {
         camera.flash.mode = camera.isFlashOn ? Camera.FlashTorch : Camera.FlashOff;
@@ -29,14 +35,61 @@ Page {
         }
     }
     Component.onCompleted: {
-        // Start the countdown if the app is already in background
-
         if (!Qt.application.active) {
-                    console.log("Forced background timer");
+            console.log("Start the timer for forced camera shutdown");
             bootForceSwitchTimer.start();
-        }
-        else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
+        } else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen) {
             camera.cameraState = Camera.ActiveState;
+        }
+    }
+
+    ShareAction {
+        id: shareAction
+
+        resources: [mainPage.savedImagePath]
+        mimeType: "image/png"
+    }
+
+    Notification {
+        id: saveNotification
+
+        appName: "Tarkka"
+        icon: "image://theme/icon-m-image"
+        isTransient: false
+        expireTimeout: 5000
+        remoteActions: [{
+            "name": "default",
+            "service": "com.jolla.gallery",
+            "path": "/com/jolla/gallery/ui",
+            "iface": "com.jolla.gallery.ui",
+            "method": "showimage",
+            "arguments": ["file://" + mainPage.savedImagePath]
+        }, {
+            "name": "open",
+            "displayName": qsTr("Open"),
+            "service": "com.jolla.gallery",
+            "path": "/com/jolla/gallery/ui",
+            "iface": "com.jolla.gallery.ui",
+            "method": "showimage",
+            "arguments": ["file://" + mainPage.savedImagePath]
+        }, {
+            "name": "share",
+            "displayName": qsTr("Share"),
+            "icon": "icon-s-share"
+        }]
+        onClicked: {
+            console.log("Triggered opening of " + mainPage.savedImagePath);
+            Qt.openUrlExternally("file://" + mainPage.savedImagePath);
+        }
+        onActionInvoked: {
+            if (name === "open") {
+                console.log("Triggered opening of " + mainPage.savedImagePath);
+                Qt.openUrlExternally("file://" + mainPage.savedImagePath);
+            } else if (name === "share") {
+                console.log("Triggered sharing of " + mainPage.savedImagePath);
+                shareAction.trigger();
+            }
+        }
     }
 
     Camera {
@@ -209,7 +262,7 @@ Page {
                         var delta = (pinch.scale - 1) * sensitivity;
                         var newZoom = initialZoom + delta;
                         var maxZoom = camera.maximumDigitalZoom > 1 ? camera.maximumDigitalZoom : 4;
-                        zoomSlider.value = Math.max(1, Math.min(newZoom, maxZoom));
+                        frozenZoomSlider.value = Math.max(1, Math.min(newZoom, maxZoom));
                     }
                 }
 
@@ -297,11 +350,12 @@ Page {
             Item {
                 width: parent.width
                 height: Theme.itemSizeMedium
-                visible: !mainPage.isFrozen
 
                 UIButton {
                     id: switchCameraButton
 
+                    visible: !mainPage.isFrozen
+                    enabled: visible
                     anchors.left: parent.left
                     anchors.leftMargin: Theme.horizontalPageMargin
                     icon.width: Theme.iconSizeMedium
@@ -318,6 +372,7 @@ Page {
                 ZoomSlider {
                     id: zoomSlider
 
+                    visible: !mainPage.isFrozen
                     anchors.left: switchCameraButton.right
                     anchors.right: flashButton.left
                     enabled: camera.cameraState === Camera.ActiveState
@@ -330,12 +385,31 @@ Page {
                     customLabelText: "Zoom: " + Math.round(value) + "x"
                     onValueChanged: {
                         if (camera.cameraState === Camera.ActiveState) {
-                            var absoluteMax = maximumValue - 0.01; // The max zoom would not work without this 
+                            var absoluteMax = maximumValue - 0.01; // The max zoom would not work without this
                             var safeZoom = Math.max(minimumValue, Math.min(absoluteMax, value));
                             console.log("Slider clicked/dragged! Safe zoom is now:", safeZoom);
                             console.log("Slider value:", zoomSlider.value);
                             camera.digitalZoom = safeZoom;
                         }
+                    }
+                }
+
+                ZoomSlider {
+                    id: frozenZoomSlider
+
+                    visible: mainPage.isFrozen
+                    anchors.left: switchCameraButton.right
+                    anchors.right: flashButton.left
+                    minimumValue: 1
+                    maximumValue: 4
+                    value: 1
+                    stepSize: 1
+                    animateValue: false
+                    customLabelText: "Zoom: " + Math.round(value * 10) / 10 + "x"
+                    onValueChanged: {
+                        if (mainPage.isFrozen)
+                            frozenView.scale = value;
+
                     }
                 }
 
@@ -347,11 +421,48 @@ Page {
                     icon.width: Theme.iconSizeMedium
                     icon.height: Theme.iconSizeMedium
                     enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
-                    visible: camera.position === Camera.BackFace
+                    visible: camera.position === Camera.BackFace && !mainPage.isFrozen
                     icon.source: camera.isFlashOn ? "image://theme/icon-camera-flash-on" : "image://theme/icon-camera-flash-off"
                     onClicked: {
                         camera.isFlashOn = !camera.isFlashOn;
                         syncCameraSettings();
+                    }
+                }
+
+                UIButton {
+                    id: saveButton
+
+                    property bool isSaving: false
+
+                    visible: mainPage.isFrozen
+                    enabled: visible && !isSaving
+                    anchors.right: parent.right
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    icon.width: Theme.iconSizeMedium
+                    icon.height: Theme.iconSizeMedium
+                    icon.source: "image://theme/icon-m-sd-card"
+                    onClicked: {
+                        if (mainPage.lastFreezeFrame) {
+                            saveButton.isSaving = true;
+                            var timestamp = new Date().getTime();
+                            var fileName = "Tarkka_" + timestamp + ".png";
+                            mainPage.savedImagePath = StandardPicturesPath + "/" + fileName;
+                            console.log("Saving in: " + mainPage.savedImagePath);
+                            var success = mainPage.lastFreezeFrame.saveToFile(mainPage.savedImagePath);
+                            if (success) {
+                                saveNotification.icon = mainPage.savedImagePath;
+                                saveNotification.summary = qsTr("Image saved");
+                                saveNotification.body = qsTr("Image saved in the gallery as ") + fileName;
+                                saveNotification.publish();
+                                console.log("Image saved in: " + mainPage.savedImagePath);
+                            } else {
+                                saveNotification.icon = "image://theme/icon-splus-error";
+                                saveNotification.summary = qsTr("Error");
+                                saveNotification.body = qsTr("Error saving the image in the gallery");
+                                console.log("Image cannot be saved");
+                            }
+                            saveButton.isSaving = false;
+                        }
                     }
                 }
 
@@ -368,6 +479,7 @@ Page {
                     height: parent.height
 
                     UIButton {
+                        visible: !mainPage.isFrozen
                         anchors.right: parent.right
                         enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                         icon.source: "image://theme/icon-m-remove"
@@ -375,6 +487,18 @@ Page {
                         onClicked: {
                             var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
                             zoomSlider.value = Math.max(zoomSlider.minimumValue, zoomSlider.value - step);
+                        }
+                    }
+
+                    UIButton {
+                        visible: mainPage.isFrozen
+                        enabled: visible
+                        anchors.right: parent.right
+                        icon.source: "image://theme/icon-m-remove"
+                        backgroundSize: Theme.iconSizeLarge - Theme.paddingMedium
+                        onClicked: {
+                            var step = (frozenZoomSlider.maximumValue - frozenZoomSlider.minimumValue) / 4;
+                            frozenZoomSlider.value = Math.max(frozenZoomSlider.minimumValue, frozenZoomSlider.value - step);
                         }
                     }
 
@@ -387,23 +511,35 @@ Page {
                     UIButton {
                         id: freezeButton
 
-                        visible: true
+                        visible: !mainPage.isFrozen
+                        enabled: visible
                         anchors.centerIn: parent
-                        icon.source: mainPage.isFrozen ? "image://theme/icon-l-clear" : "image://theme/icon-camera-shutter"
+                        icon.source: "image://theme/icon-camera-shutter"
                         onClicked: {
-                            if (mainPage.isFrozen) {
-                                mainPage.isFrozen = false;
-                                frozenView.scale = 1; // Riporta l'immagine alla grandezza originale
-                                imageFlickable.contentX = 0; // Centra l'asse X
-                                imageFlickable.contentY = 0; // Centra l'asse Y
-                                camera.cameraState = Camera.ActiveState;
-                            } else {
-                                shaderView.grabToImage(function(result) {
-                                    frozenView.source = result.url;
-                                    mainPage.isFrozen = true;
-                                    camera.cameraState = Camera.UnloadedState;
-                                });
-                            }
+                            shaderView.grabToImage(function(result) {
+                                mainPage.lastFreezeFrame = result;
+                                frozenView.source = result.url;
+                                mainPage.isFrozen = true;
+                                camera.cameraState = Camera.UnloadedState;
+                            });
+                        }
+                    }
+
+                    UIButton {
+                        id: unfreezeButton
+
+                        visible: mainPage.isFrozen
+                        enabled: visible
+                        anchors.centerIn: parent
+                        icon.source: "image://theme/icon-l-clear"
+                        backgroundSize: Theme.iconSizeLarge
+                        onClicked: {
+                            mainPage.isFrozen = false;
+                            frozenView.scale = 1;
+                            frozenZoomSlider.value = 1; // Reset freeze slider
+                            imageFlickable.contentX = 0;
+                            imageFlickable.contentY = 0;
+                            camera.cameraState = Camera.ActiveState;
                         }
                     }
 
@@ -414,14 +550,27 @@ Page {
                     height: parent.height
 
                     UIButton {
+                        visible: !mainPage.isFrozen
                         anchors.left: parent.left
                         enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                         icon.source: "image://theme/icon-m-add"
                         backgroundSize: Theme.iconSizeLarge - Theme.paddingMedium
-                        circleBorderWidth: 2
                         onClicked: {
                             var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
                             zoomSlider.value = Math.min(zoomSlider.maximumValue, zoomSlider.value + step);
+                        }
+                    }
+
+                    UIButton {
+                        visible: mainPage.isFrozen
+                        enabled: visible
+                        anchors.left: parent.left
+                        icon.source: "image://theme/icon-m-add"
+                        backgroundSize: Theme.iconSizeLarge - Theme.paddingMedium
+                        circleBorderWidth: 2
+                        onClicked: {
+                            var step = (frozenZoomSlider.maximumValue - frozenZoomSlider.minimumValue) / 4;
+                            frozenZoomSlider.value = Math.min(frozenZoomSlider.maximumValue, frozenZoomSlider.value + step);
                         }
                     }
 
@@ -632,6 +781,7 @@ Page {
                 if (Qt.application.active) {
                     bootForceSwitchTimer.stop(); // Stop the "kill" timer if user returns
                     // Turn the camera on if on mainPage and NOT freeze view
+                    console.log("Stop the timer for forced camera shutdown");
                     console.log("Page foreground detected");
                     if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
                         camera.cameraState = Camera.ActiveState;

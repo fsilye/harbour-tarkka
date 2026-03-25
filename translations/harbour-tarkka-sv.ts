@@ -148,75 +148,99 @@
     <name>MainPage</name>
     <message>
         <source>Filters</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Ljusstyrka</translation>
     </message>
     <message>
         <source>Contrast</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrast</translation>
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Om</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Inget</translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation type="unfinished">Gråskala</translation>
+        <translation>Gråskala</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation type="unfinished">Negativ.</translation>
+        <translation>Negativ</translation>
     </message>
     <message>
         <source>Solarize</source>
-        <translation type="unfinished">Solarisering</translation>
+        <translation>Solarisera</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation type="unfinished">Vita-tavlan</translation>
+        <translation>Vita-tavlan</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation type="unfinished">Svarta-tavlan</translation>
+        <translation>Svarta-tavlan</translation>
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation type="unfinished">Gul på svart</translation>
+        <translation>Gul på svart</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation type="unfinished">Svart på gul</translation>
+        <translation>Svart på gul</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation type="unfinished">Gul på blå</translation>
+        <translation>Gul på blå</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation type="unfinished">Blå på gul</translation>
+        <translation>Blå på gul</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation type="unfinished">Vit på blå</translation>
+        <translation>Vit på blå</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation type="unfinished">blå på vit</translation>
+        <translation>Blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation type="unfinished">Röd på svart</translation>
+        <translation>Röd på svart</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation type="unfinished">Svart på röd</translation>
+        <translation>Svart på röd</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Share</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Image saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error saving the image in the gallery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Image saved in the gallery as </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
