@@ -2,9 +2,11 @@
 #include <QtQuick>
 #endif
 
+#include <QGuiApplication>
+#include <QQuickView>
+#include <QQmlContext>
 #include <sailfishapp.h>
-#include <QStandardPaths> // NUOVO: Per trovare le cartelle di sistema
-#include <QQmlContext>    // NUOVO: Per comunicare con il QML
+#include <QStandardPaths>
 
 int main(int argc, char *argv[])
 {
