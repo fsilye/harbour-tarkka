@@ -29,8 +29,10 @@ Page {
         }
     }
     Component.onCompleted: {
+        // Start the countdown if the app is already in background
+
         if (!Qt.application.active)
-            // Start the countdown if the app is already in background
+                    console.log("Forced background timer");
             bootForceSwitchTimer.start();
         else if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
             camera.cameraState = Camera.ActiveState;
@@ -119,7 +121,7 @@ Page {
                     void main() {
                         highp vec4 color = texture2D(source, qt_TexCoord0);
 
-                        // Calcoliamo quanto è luminoso il pixel originale (da 0.0 a 1.0)
+                        // Calc pixel brightness (from 0.0 to 1.0)
                         highp float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
 
                         // 0 is dark (text), 1 is light (background)
@@ -195,15 +197,13 @@ Page {
                 onPinchStarted: {
                     if (mainPage.isFrozen)
                         initialScale = frozenView.scale;
-                    else
-                        if (camera.cameraState === Camera.ActiveState) {
-                            initialZoom = zoomSlider.value;
-                        }
+                    else if (camera.cameraState === Camera.ActiveState)
+                        initialZoom = zoomSlider.value;
                 }
                 onPinchUpdated: {
-                    if (mainPage.isFrozen)
+                    if (mainPage.isFrozen) {
                         frozenView.scale = Math.max(1, Math.min(initialScale * pinch.scale, 4));
-                    else if (camera.cameraState === Camera.ActiveState) {
+                    } else if (camera.cameraState === Camera.ActiveState) {
                         var sensitivity = 4;
                         var delta = (pinch.scale - 1) * sensitivity;
                         var newZoom = initialZoom + delta;
@@ -314,20 +314,26 @@ Page {
                     }
                 }
 
-                Slider {
+                ZoomSlider {
                     id: zoomSlider
 
                     anchors.left: switchCameraButton.right
                     anchors.right: flashButton.left
                     enabled: camera.cameraState === Camera.ActiveState
-                    opacity: enabled ? (pressed ? 1 : 0.8) : 0.3
-                    label: "Zoom: " + value.toFixed(1) + "x"
+                    opacity: enabled ? (down ? 1 : 0.8) : 0.3
                     minimumValue: 1
                     maximumValue: camera.maximumDigitalZoom > 1 ? camera.maximumDigitalZoom : 4
                     value: 1
+                    stepSize: 1
+                    animateValue: false
+                    customLabelText: "Zoom: " + Math.round(value) + "x"
                     onValueChanged: {
                         if (camera.cameraState === Camera.ActiveState) {
-                            camera.digitalZoom = value
+                            var safeZoom = Math.max(minimumValue, Math.min(maximumValue, value));
+                            console.log("Slider clicked/dragged! Safe zoom is now:", safeZoom);
+                            console.log("Slider value:", zoomSlider.value);
+                            console.log("Maximum zoom reported by the system:", camera.maximumDigitalZoom);
+                            camera.digitalZoom = safeZoom;
                         }
                     }
                 }
@@ -364,6 +370,7 @@ Page {
                         anchors.right: parent.right
                         enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                         icon.source: "image://theme/icon-m-remove"
+                        backgroundSize: Theme.iconSizeLarge - Theme.paddingMedium
                         onClicked: {
                             var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
                             zoomSlider.value = Math.max(zoomSlider.minimumValue, zoomSlider.value - step);
@@ -409,6 +416,8 @@ Page {
                         anchors.left: parent.left
                         enabled: camera.cameraState === Camera.ActiveState && !mainPage.isFrozen
                         icon.source: "image://theme/icon-m-add"
+                        backgroundSize: Theme.iconSizeLarge - Theme.paddingMedium
+                        circleBorderWidth: 2
                         onClicked: {
                             var step = (zoomSlider.maximumValue - zoomSlider.minimumValue) / 4;
                             zoomSlider.value = Math.min(zoomSlider.maximumValue, zoomSlider.value + step);
@@ -622,12 +631,14 @@ Page {
                 if (Qt.application.active) {
                     bootForceSwitchTimer.stop(); // Stop the "kill" timer if user returns
                     // Turn the camera on if on mainPage and NOT freeze view
+                    console.log("Page foreground detected");
                     if (mainPage.status === PageStatus.Active && !mainPage.isFrozen)
                         camera.cameraState = Camera.ActiveState;
 
                     mainPage.syncCameraSettings();
                 } else {
                     // Turn everything off when the app is on the background
+                    console.log("Page background detected");
                     camera.cameraState = Camera.UnloadedState;
                     camera.flash.mode = Camera.FlashOff;
                     camera.isFlashOn = false;

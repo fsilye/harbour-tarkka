@@ -148,75 +148,75 @@
     <name>MainPage</name>
     <message>
         <source>Filters</source>
-        <translation>Filter</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation>Ljusstyrka</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Contrast</source>
-        <translation>Kontrast</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>About</source>
-        <translation>Om</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>None</source>
-        <translation>Inget</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation>Gråskala</translation>
+        <translation type="unfinished">Gråskala</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation>Negativ</translation>
+        <translation type="unfinished">Negativ.</translation>
     </message>
     <message>
         <source>Solarize</source>
-        <translation>Solarisera</translation>
+        <translation type="unfinished">Solarisering</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation>Vita-tavlan</translation>
+        <translation type="unfinished">Vita-tavlan</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation>Svarta-tavlan</translation>
+        <translation type="unfinished">Svarta-tavlan</translation>
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation>Gul på svart</translation>
+        <translation type="unfinished">Gul på svart</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation>Svart på gul</translation>
+        <translation type="unfinished">Svart på gul</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation>Gul på blå</translation>
+        <translation type="unfinished">Gul på blå</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation>Blå på gul</translation>
+        <translation type="unfinished">Blå på gul</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation>Vit på blå</translation>
+        <translation type="unfinished">Vit på blå</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation>Blå på vit</translation>
+        <translation type="unfinished">blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation>Röd på svart</translation>
+        <translation type="unfinished">Röd på svart</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation>Svart på röd</translation>
+        <translation type="unfinished">Svart på röd</translation>
     </message>
 </context>
 </TS>

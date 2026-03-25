@@ -148,75 +148,75 @@
     <name>MainPage</name>
     <message>
         <source>Filters</source>
-        <translation>Filtri</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Brightness</source>
-        <translation>Luminosità</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Contrast</source>
-        <translation>Contrasto</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>About</source>
-        <translation>Informazioni</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>None</source>
-        <translation>Nessuno</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation>Scala di grigi</translation>
+        <translation type="unfinished">Scala di grigi</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation>Negativo</translation>
+        <translation type="unfinished">Negativo</translation>
     </message>
     <message>
         <source>Solarize</source>
-        <translation>Solarizza</translation>
+        <translation type="unfinished">Solarizza</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation>Lavagna bianca</translation>
+        <translation type="unfinished">Lavagna bianca</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation>Lavagna nera</translation>
+        <translation type="unfinished">Lavagna nera</translation>
     </message>
     <message>
         <source>Yellow on black</source>
-        <translation>Giallo su nero</translation>
+        <translation type="unfinished">Giallo su nero</translation>
     </message>
     <message>
         <source>Black on yellow</source>
-        <translation>Nero su giallo</translation>
+        <translation type="unfinished">Nero su giallo</translation>
     </message>
     <message>
         <source>Yellow on blue</source>
-        <translation>Giallo su blu</translation>
+        <translation type="unfinished">Giallo su blu</translation>
     </message>
     <message>
         <source>Blue on yellow</source>
-        <translation>Blu su giallo</translation>
+        <translation type="unfinished">Blu su giallo</translation>
     </message>
     <message>
         <source>White on blue</source>
-        <translation>Bianco su blu</translation>
+        <translation type="unfinished">Bianco su blu</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation>Blu su bianco</translation>
+        <translation type="unfinished">Blu su bianco</translation>
     </message>
     <message>
         <source>Red on black</source>
-        <translation>Rosso su nero</translation>
+        <translation type="unfinished">Rosso su nero</translation>
     </message>
     <message>
         <source>Black on red</source>
-        <translation>Nero su rosso</translation>
+        <translation type="unfinished">Nero su rosso</translation>
     </message>
 </context>
 </TS>
