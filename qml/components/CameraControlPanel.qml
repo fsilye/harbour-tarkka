@@ -94,14 +94,25 @@ Column {
             property bool isSaving: false
 
             visible: root.isFrozen
-            enabled: visible && !isSaving
+            enabled: visible
             anchors.right: parent.right
             anchors.rightMargin: Theme.horizontalPageMargin
             icon.width: Theme.iconSizeMedium
             icon.height: Theme.iconSizeMedium
             icon.source: "image://theme/icon-m-downloads"
+            icon.opacity: isSaving ? 0.0 : 1.0
+
             onClicked: {
-                root.saveClicked();
+                if (!isSaving) {
+                    root.saveClicked();
+                }
+            }
+
+            BusyIndicator {
+                anchors.centerIn: parent
+                size: BusyIndicatorSize.Medium
+                running: saveButton.isSaving
+                visible: running
             }
         }
 

@@ -338,6 +338,7 @@ Page {
                         saveNotification.icon = "image://theme/icon-splus-error";
                         saveNotification.summary = qsTr("Error");
                         saveNotification.body = qsTr("Error saving the image in the gallery");
+                        saveNotification.publish();
                         console.log("Image cannot be saved");
                     }
                     floatingControls.isSaving = false;
