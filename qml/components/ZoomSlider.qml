@@ -7,6 +7,11 @@ Slider {
     property string customLabelText: ""
 
     label: ""
+    minimumValue: 1
+    maximumValue: 4
+    value: 1
+    animateValue: false
+    opacity: enabled ? (down ? 1 : 0.8) : 0.3
 
     Label {
         id: customLabel

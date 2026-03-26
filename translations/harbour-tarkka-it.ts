@@ -145,23 +145,7 @@
     </message>
 </context>
 <context>
-    <name>MainPage</name>
-    <message>
-        <source>Filters</source>
-        <translation>Filtri</translation>
-    </message>
-    <message>
-        <source>Brightness</source>
-        <translation>Luminosità</translation>
-    </message>
-    <message>
-        <source>Contrast</source>
-        <translation>Contrasto</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Informazioni</translation>
-    </message>
+    <name>FilterList</name>
     <message>
         <source>None</source>
         <translation>Nessuno</translation>
@@ -218,6 +202,9 @@
         <source>Black on red</source>
         <translation>Nero su rosso</translation>
     </message>
+</context>
+<context>
+    <name>MainPage</name>
     <message>
         <source>Open</source>
         <translation>Apri</translation>
@@ -225,6 +212,22 @@
     <message>
         <source>Share</source>
         <translation>Condividi</translation>
+    </message>
+    <message>
+        <source>Filters</source>
+        <translation>Filtri</translation>
+    </message>
+    <message>
+        <source>Brightness</source>
+        <translation>Luminosità</translation>
+    </message>
+    <message>
+        <source>Contrast</source>
+        <translation>Contrasto</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>Informazioni</translation>
     </message>
     <message>
         <source>Image saved</source>

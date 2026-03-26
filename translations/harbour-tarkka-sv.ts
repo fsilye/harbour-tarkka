@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Blue on white</source>
-        <translation>blå på vit</translation>
+        <translation>Blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
@@ -145,23 +145,7 @@
     </message>
 </context>
 <context>
-    <name>MainPage</name>
-    <message>
-        <source>Filters</source>
-        <translation>Filter</translation>
-    </message>
-    <message>
-        <source>Brightness</source>
-        <translation>Ljusstyrka</translation>
-    </message>
-    <message>
-        <source>Contrast</source>
-        <translation>Kontrast</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation>Om</translation>
-    </message>
+    <name>FilterList</name>
     <message>
         <source>None</source>
         <translation>Inget</translation>
@@ -172,7 +156,8 @@
     </message>
     <message>
         <source>Negative</source>
-        <translation>Negativ</translation>
+        <translation>
+Negativ</translation>
     </message>
     <message>
         <source>Solarize</source>
@@ -208,7 +193,8 @@
     </message>
     <message>
         <source>Blue on white</source>
-        <translation>Blå på vit</translation>
+        <translation>
+Blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
@@ -218,29 +204,48 @@
         <source>Black on red</source>
         <translation>Svart på röd</translation>
     </message>
+</context>
+<context>
+    <name>MainPage</name>
     <message>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna</translation>
     </message>
     <message>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela</translation>
+    </message>
+    <message>
+        <source>Filters</source>
+        <translation>Filter</translation>
+    </message>
+    <message>
+        <source>Brightness</source>
+        <translation>Ljusstyrka</translation>
+    </message>
+    <message>
+        <source>Contrast</source>
+        <translation>Kontrast</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>Om</translation>
     </message>
     <message>
         <source>Image saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild sparad</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <source>Error saving the image in the gallery</source>
-        <translation type="unfinished"></translation>
+        <translation>Ett fel uppstod när bilden skulle sparas i Galleri</translation>
     </message>
     <message>
         <source>Image saved in the gallery as </source>
-        <translation type="unfinished"></translation>
+        <translation>Bilden sparad i Galleri som </translation>
     </message>
 </context>
 </TS>
