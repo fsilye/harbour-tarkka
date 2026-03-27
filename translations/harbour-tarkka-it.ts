@@ -234,16 +234,16 @@
         <translation>Immagine salvata</translation>
     </message>
     <message>
+        <source>Image saved in the gallery as </source>
+        <translation>Immagine salvata nella galleria come </translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
         <source>Error saving the image in the gallery</source>
         <translation>Errore durante il salvataggio nella galleria</translation>
-    </message>
-    <message>
-        <source>Image saved in the gallery as </source>
-        <translation>Immagine salvata nella galleria come </translation>
     </message>
 </context>
 </TS>

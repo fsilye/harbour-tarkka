@@ -156,8 +156,7 @@
     </message>
     <message>
         <source>Negative</source>
-        <translation>
-Negativ</translation>
+        <translation>Negativ</translation>
     </message>
     <message>
         <source>Solarize</source>
@@ -193,8 +192,7 @@ Negativ</translation>
     </message>
     <message>
         <source>Blue on white</source>
-        <translation>
-Blå på vit</translation>
+        <translation>Blå på vit</translation>
     </message>
     <message>
         <source>Red on black</source>
@@ -236,16 +234,16 @@ Blå på vit</translation>
         <translation>Bild sparad</translation>
     </message>
     <message>
+        <source>Image saved in the gallery as </source>
+        <translation>Bilden sparad i Galleri som </translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
     <message>
         <source>Error saving the image in the gallery</source>
         <translation>Ett fel uppstod när bilden skulle sparas i Galleri</translation>
-    </message>
-    <message>
-        <source>Image saved in the gallery as </source>
-        <translation>Bilden sparad i Galleri som </translation>
     </message>
 </context>
 </TS>

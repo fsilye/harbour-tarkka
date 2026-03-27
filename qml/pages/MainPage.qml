@@ -82,6 +82,10 @@ Page {
             "method": "showimage",
             "arguments": ["file://" + mainPage.savedImagePath]
         }, {
+            "name": "share",
+            "displayName": qsTr("Share"),
+            "icon": "icon-s-share"
+        }, {
             "name": "open",
             "displayName": qsTr("Open"),
             "service": "com.jolla.gallery",
@@ -89,10 +93,6 @@ Page {
             "iface": "com.jolla.gallery.ui",
             "method": "showimage",
             "arguments": ["file://" + mainPage.savedImagePath]
-        }, {
-            "name": "share",
-            "displayName": qsTr("Share"),
-            "icon": "icon-s-share"
         }]
         onClicked: {
             console.log("Triggered opening of " + mainPage.savedImagePath);
@@ -342,6 +342,21 @@ Page {
                         console.log("Image cannot be saved");
                     }
                     floatingControls.isSaving = false;
+                }
+            }
+            onShareClicked: {
+                if (mainPage.lastFreezeFrame) {
+                    floatingControls.isSharing = true;
+                    var tempPath = "/tmp/tarkka_share_temp.png";
+                    var success = mainPage.lastFreezeFrame.saveToFile(tempPath);
+                    console.log("Sharing: file://" + tempPath);
+                    if (success) {
+                        shareAction.resources = ["file://" + tempPath];
+                        shareAction.trigger();
+                    } else {
+                        console.log("Error during sharing.");
+                    }
+                    floatingControls.isSharing = false;
                 }
             }
         }

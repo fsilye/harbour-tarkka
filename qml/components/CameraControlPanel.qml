@@ -10,9 +10,11 @@ Column {
     property alias activeZoom: zoomSlider.value
     property alias frozenZoom: frozenZoomSlider.value
     property alias isSaving: saveButton.isSaving
+    property alias isSharing: shareButton.isSharing
 
     signal flashClicked()
     signal saveClicked()
+    signal shareClicked()
     signal freezeClicked()
     signal unfreezeClicked()
 
@@ -39,6 +41,34 @@ Column {
                 zoomSlider.value = 1;
                 root.cameraObj.position = (root.cameraObj.position === Camera.BackFace) ? Camera.FrontFace : Camera.BackFace;
             }
+        }
+
+        UIButton {
+            id: shareButton
+
+            property bool isSharing: false
+
+            visible: root.isFrozen
+            enabled: visible
+            anchors.left: parent.left
+            anchors.leftMargin: Theme.horizontalPageMargin
+            icon.width: Theme.iconSizeMedium
+            icon.height: Theme.iconSizeMedium
+            icon.source: "image://theme/icon-m-share"
+            icon.opacity: isSharing ? 0 : 1
+            onClicked: {
+                if (!isSharing)
+                    root.shareClicked();
+
+            }
+
+            BusyIndicator {
+                anchors.centerIn: parent
+                size: BusyIndicatorSize.Medium
+                running: shareButton.isSharing
+                visible: running
+            }
+
         }
 
         ZoomSlider {
@@ -100,12 +130,11 @@ Column {
             icon.width: Theme.iconSizeMedium
             icon.height: Theme.iconSizeMedium
             icon.source: "image://theme/icon-m-downloads"
-            icon.opacity: isSaving ? 0.0 : 1.0
-
+            icon.opacity: isSaving ? 0 : 1
             onClicked: {
-                if (!isSaving) {
+                if (!isSaving)
                     root.saveClicked();
-                }
+
             }
 
             BusyIndicator {
@@ -114,6 +143,7 @@ Column {
                 running: saveButton.isSaving
                 visible: running
             }
+
         }
 
     }
