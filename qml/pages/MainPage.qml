@@ -73,7 +73,6 @@ Page {
         appName: "Tarkka"
         icon: "image://theme/icon-m-image"
         isTransient: false
-        expireTimeout: 5000
         remoteActions: [{
             "name": "default",
             "service": "com.jolla.gallery",
